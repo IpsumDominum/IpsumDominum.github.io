@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+  <a class="navbar-brand" href="index.html">IpsumDominum</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="contact.html">Contact <span class="sr-only">(current)</span></a>
+      </li>
+	<li class="nav-item">
+        <a class="nav-link" href="cv.html">CV<span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<main role="main" class="container">
+
+  <div class="starter-template">
+  	<br>
+  	<br>
+    <br>
+ 	<h2><strong>Summary of ICML 2019 Jeff Clune's tutorial on Recent Advances in Population-Based Search for Deep Neural Networks.</strong></h2>
+<p><strong>Introduction:</strong></p>
+<p>&nbsp;</p>
+<p><strong>What is Population-based Search:</strong></p>
+<p>To maintain a population of candidate solutions, and optimizing&nbsp;</p>
+<p>Example:&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;A Vanilla Genetic Algorithm -&nbsp;</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;1.start by randomly initializating members of a population.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;2.Evaluate them.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;3.Cull out bad performing ones.</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;4. Make noisy copies of good performing ones.</p>
+<p>People might resent population based search since it is blackbox.</p>
+<p>There are no theoretical guarentees for convergence etc.</p>
+<p>&nbsp;</p>
+<h3><strong>Diversity-centric Search:</strong></h3>
+<p><strong>Motivation:</strong></p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Finding the right objective function is crucial to success in doing Machine</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Learning.<br /> However there exists the problem of "Deception", where as we aim for very ambitious and<br /> far reaching objectives, the objective itself could be misguiding.<br /> We can intuitively see this problem through this example:<br /> <img src="1.png" alt="Maze image"></p><p>
+Consider this maze where the objective is to travel an agent from the left bottom corner to the top left corner.<br>
+Here if we only use the distance between where the agent ends up with and the final objective, then we will be mislead. We must first
+accept a period of "worse" performances (fitness) or negative reward in order to not be stuck in the local minima.</P>
+<p>Perhaps optimizing the diversity of the solutions could be an alternative approach.By optimizing<br /> the diversity we are exploring many things which on the surface might not seem to contribute to<br /> the ultimate solution. An example could be: we want to increase our computing power ( invent the computer)<br /> after inventing the abacus;the right way to go is not to build bigger and bigger abacuses, which seems<br /> like the obvious solution. Rather, we should explore areas of science such as electricity and information theory.</p>
+<p><img src="2.png" alt="Evolution of Science"></p>
+<p>&nbsp;</p>
+<p><span style="background-color: #ffffff;"><strong>Novelty search(Lehman and Stanley 2008):</strong></span><br /> Instead of optimizing the fitness function as correspondant to performance on an objective.<br /> We could measure the fitness as the diversity of the population's behaviours to the previous<br /> population's behaviours.<br /> For instance, for the maze navigation task, we could be measuring the difference betweeen the final distance<br /> explored by a member of the population to the rest of the population as the fitness.<br /> <img src="3.png" alt="comparison"></p><p>here we see that novelty helped with getting unstuck from local minima</p>
+<p><img src="4.png" alt="Biped"></p><p>Picture - Novelty search finding better solution to Objective based search on bi-pedal robot gait task.</p>
+<p><strong>Related works:</strong><br /> Autonomous mental development/intrinsic motivation/curiosity<br /> (Oudeyer and Kaplan 2007,Schmidhuber 1991)</p>
+<p>In Deep reinforcement learning:<br /> DIAYN<br /> Curiosity-driven exploration<br /> Skew-fit<br /> Hindsight Experience Replay<br /> Unsupervised Meta-learning<br /> Diversity is All you need</p>
+<p>Curiosity-driven exploration by Self-Supervised Prediction:</p>
+<p>&nbsp; &nbsp; &nbsp; &nbsp; In the talk curiosity driven exploration by self supervised prediction is used as an example of using the principle of diversity to explore in RL applications. Basically we attempt to learn model of the enviornment by predicting the next state (t+1) based on the current state and our action taken. (prediction is done in an encoded feature space). Then we can use the prediction error of this model as an internal reward of "curiosity" to encourage exploratory policies.&nbsp;</p>
+<p><strong>Conclusions:</strong><br /> It is interesting that divergence as an evolutionary objective could work so well alone.<br /> How can we combine objective based and divergence based exploration?</p>
+<p><strong>Combining Diversity and Objective based search:</strong></p>
+<p><strong>Combining Novelty and Achievement(Mouret and Doncieux 2012):</strong><br />&nbsp; &nbsp; Optimizing both novelty and objective simutaneously through perhaps a weighted average.<br />&nbsp; &nbsp; Optimizing the objective until stuck, then switch to novelty.<br />&nbsp; &nbsp; Population-based multi-objective optimization(Fonseca et al.1995):<br />&nbsp; &nbsp; Basically having both novelty and objective as objectives, and ranking populations based<br />&nbsp; &nbsp; on their order of fitness on both criteria and a member of the population A is only better<br />&nbsp; &nbsp; performing then another member B if<br />&nbsp; &nbsp; objective_score(A)&gt;objective_score(B)<br />&nbsp; &nbsp; and<br />&nbsp; &nbsp; novelty_score(A)&gt;novelty_score(B)<br /> Problem:<br />&nbsp; &nbsp; The whole point of novelty search is to avoid the problem of deception.<br />&nbsp; &nbsp; Perhaps we could evolve separately Novelty and Objective.<br /><strong>Quality Diversity:</strong></p>
+<p>How do we generate diverse populations of different solutions with each solution a quality solution<br /> that is explored. How do we learn from previous populations generated by diversity, and not just<br /> discard valuable information which might be essential towards ultimately meeting the objective?</p>
+<p>These are the questions quality diversity aims to solve.</p>
+<p><strong>Quality Diversity with local competitions:</strong><br />&nbsp; &nbsp; <img src="5.png" alt="Evolving Animals"><br />&nbsp; &nbsp; We could first evolve different diverse solutions and then optimize the solutions by letting them<br />&nbsp; &nbsp; compete against itself.<br /><p>&nbsp; &nbsp; consider Natural Evolution, we have a diverse amount of solutions to life, and all of them are very quality solutions of different niches. One thing we could do is to generate different populations but attempt to "speciate" them and have them locally compete with each other. This is also used in the NEAT alghorithm.<br /><img src="6.png" alt="local competition"><br />It turns out that local Competition gives you diverse yet high performing solutions.</p><strong> MAP-ELITES:</strong><br /><div class="container">An algorithm which could push the whole evolution towards exploring all kinds of possible solutions,<br /> but also let solutions learnt from different "niches" help other populations.<br /> <br><br>You first initialize a table which represents the "types" of populations that you intend to generate.<br /> We pick a random "type" and generate a new population based on the current best population of that<br /> "type". If no population has been generated yet, we randomly initialize a population, otherwise,<br /> we then mutate that new population. The mutated population, if it is of another type and is performing<br /> better than the current best performer of that type, we replace that type with this new population.<br /> We continue the evolution until it converges to many different interesting solutions. <p>How to choose the "types"?:<br /> we could manually create features such as "height" and "weight" of a generated animal. Or we could use<br /> some sort of dimensional compression mechanism perhaps an autoencoder to generate a latent space.</p><img src="7.png" alt="mapelite"><br /> Map elite gives a very thorough exploration of the whole "morphology space", or "type space", whatever you call it.<img src="8.png" alt="map elite alex net"></p>
+The above image is an attempt to use map elites to generate images which correspond to classes of the alexnet trained on the ImageNet dataset. We can see that it can easily fall into some local minima, but map elites facilitates learning a diverse solution which comes
+to inspire each other, effective in this task.
+
+</div>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+
+
+</main><!-- /.container -->
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
+
