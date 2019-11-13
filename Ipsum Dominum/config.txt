@@ -1,0 +1,7 @@
+##CONFIG FILE FOR PYBLOGGER1.0##
+--------------------------------------------------------------------------------------
+root_dir:layouts             : Leave blank if not organized, highly not recommended.
+pages_dir:pages              : Where the pages live :) they live happily organised.
+headerfile:header.html       : Some headerfile that you'll use.
+blogsdir:blogs               : A place to keep all the blogs.
+---------------------------------------------------------------------------------------
