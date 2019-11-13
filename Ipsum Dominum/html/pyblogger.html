@@ -35,66 +35,62 @@
        
 <button onclick="document.location='./../../index.html'"> Back to home</button>
 <h1>pyblogger</h1>
-<p><strong>Lesson 1:</strong> Introduction and enviornment setup</p>
-<blockquote><p><strong>ProTip:</strong> You can disable any <strong>Markdown extension</strong> in the <strong>File properties</strong> dialog.</p>
-</blockquote>
-<h2>Why python?</h2>
-<p>As of 2019. Python surpasses Java to become the second most popular language on git hub open source repos.<a href="https://octoverse.github.com/#top-languages">Most popular languages on Github 2019</a>.</p>
-<table>
-<thead><tr>
-<th></th>
-<th>Speed</th>
-<th>Simplicity</th>
-<th>Utility</th>
-<th>Popularity</th>
-<th>packagemanager</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>C</td>
-<td>fast</td>
-<td>medium</td>
-<td>Pretty good, doesn't have a massive confusing web of libraries to learn, but can mean you have to implement your own solutions</td>
-<td>ok</td>
-<td>not so good</td>
-</tr>
-<tr>
-<td>C++</td>
-<td>fast</td>
-<td>medium</td>
-<td>Lower level, controlling hardware,backend for engines(game engines,etc) and compute frameworks(tensorflow etc)</td>
-<td>highish</td>
-<td>not so good</td>
-</tr>
-<tr>
-<td><code>Python</code></td>
-<td>slow</td>
-<td>simple</td>
-<td>Pretty good, source of interface for a lot of open source projects, Open BCI, open AI gym, etc etc etc.</td>
-<td>high</td>
-<td>pretty good</td>
-</tr>
-<tr>
-<td>JavaScript</td>
-<td>slow</td>
-<td>simple</td>
-<td>Pretty much mostly the web, can be used to do other things, but javascript is not really the most well designed language...</td>
-<td>high</td>
-<td>pretty good</td>
-</tr>
-<tr>
-<td>Java</td>
-<td>fast</td>
-<td>simple</td>
-<td>Pretty good, Android development etc, all kinds of things run java, but getting out of date and the package manager sucks...</td>
-<td>medium</td>
-<td>pretty good</td>
-</tr>
-</tbody>
-</table>
-<p>Professor Peter Norvig on python: "I was trying to find a language that could most resemble my pseudo code and be intuitive for my students, and it turned out that python was basically my pseudo code"
-<code>Python</code> is Simple, compact,and well supported, it is useful for many things and really great  as a language for non-programmers.</p>
+<p>Pyblogger is a simple minimalistic static markdown blog generator for github pages written in python, It's used to generate my personal blog: ipsumdominum.github.io
+(Currently under development and for personal use, feel free to send an Issue, if you would like to use the tool, I'll then make it an actual usable tool)</p>
+<h1>installation</h1>
+<h3>currently only tested on Ubuntu 18.04</h3>
+<p>if you would like to use pyblogger to generate your own blogs. Right now the best way is to clone this repo:
+  <code>git clone https://github.com/IpsumDominum/PyBlogger.git</code>
+  Then extract it anywhere,and add the directory to ~/.bashrc or equivalent (to path)</p>
+<h3>install dependencies:</h3>
+<pre><code> ``` pip install -r requirements
+ ```
+  or
+ ``` pip3 install -r requirements 
+ ```
+  highly recommend using a virtual enviornment :) but not nessacery.
+
+  ```Usage: 
+    |pyblogger init| - initializes a new project
+    |pyblogger newpost| - new post.
+    |pyblogger compile| - compiles the markdowns
+    |pyblogger commit| - commits changes
+   ```
+</code></pre>
+<h3>windows:</h3>
+<pre><code>    currently not tested, but you can change the name of pyblogger into pyblogger.py
+    then use your normal ```python pyblogger.py -command```. Should work if all the dependencies are right.
+</code></pre>
+<h3>mac:</h3>
+<pre><code>    Same as windows
+</code></pre>
+<h1>How it works</h1>
+<pre><code class="lang-code">Usage: 
+        |pyblogger init|    - initializes a new project
+        |pyblogger newpost| - new post.
+        |pyblogger newtab| - new tab.
+        |pyblogger compile| - compiles the markdowns
+</code></pre>
+<p>Initiate a project by <code>pyblogger init</code>, then a directory is generated:</p>
+<pre><code>-index.html
+-Project Name
+   -config.txt+
+   -layouts
+   -pages
+   -tabs
+   -tabshtml
+</code></pre>
+<h1>Current Features:</h1>
+<p>Create markdown pages, edit them, then use markdown compile to compile :)</p>
+<h1>TODO</h1>
+<p>Add an editor.
+  Integration with git
+  Server hosting
+  better documentation
+  themes (currently only a default minimalist theme is used)</p>
+<h1>Credit:</h1>
+<p>mistune
+  jinja2</p>
 
 
 </body>

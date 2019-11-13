@@ -1,24 +1,58 @@
-#pyblogger
+# pyblogger
 
-**Lesson 1:** Introduction and enviornment setup
- 
-> **ProTip:** You can disable any **Markdown extension** in the **File properties** dialog.
-
-
-## Why python?
-
-As of 2019. Python surpasses Java to become the second most popular language on git hub open source repos.[Most popular languages on Github 2019](https://octoverse.github.com/#top-languages). 
-
-|                |    Speed                      |Simplicity                   |Utility|Popularity|packagemanager | 
-|----------------|-------------------------------|-----------------------------|-----------|----|---|
-|C               |fast            |medium           | Pretty good, doesn't have a massive confusing web of libraries to learn, but can mean you have to implement your own solutions          |  ok  | not so good|
-|C++          |fast            |medium              | Lower level, controlling hardware,backend for engines(game engines,etc) and compute frameworks(tensorflow etc)  | highish  | not so good
-|`Python`          |slow|simple|Pretty good, source of interface for a lot of open source projects, Open BCI, open AI gym, etc etc etc.      |      high      |   pretty good|
-|JavaScript          |slow|simple| Pretty much mostly the web, can be used to do other things, but javascript is not really the most well designed language...     |  high |    pretty good|
-|  Java     |fast|simple|     Pretty good, Android development etc, all kinds of things run java, but getting out of date and the package manager sucks...             |  medium |  pretty good
-
-Professor Peter Norvig on python: "I was trying to find a language that could most resemble my pseudo code and be intuitive for my students, and it turned out that python was basically my pseudo code"
-`Python` is Simple, compact,and well supported, it is useful for many things and really great  as a language for non-programmers.
-
-
-
+Pyblogger is a simple minimalistic static markdown blog generator for github pages written in python, It's used to generate my personal blog: ipsumdominum.github.io
+(Currently under development and for personal use, feel free to send an Issue, if you would like to use the tool, I'll then make it an actual usable tool)
+# installation
+  ### currently only tested on Ubuntu 18.04 
+  if you would like to use pyblogger to generate your own blogs. Right now the best way is to clone this repo:
+  ```git clone https://github.com/IpsumDominum/PyBlogger.git```
+  Then extract it anywhere,and add the directory to ~/.bashrc or equivalent (to path)
+  ### install dependencies:
+     ``` pip install -r requirements
+     ```
+      or
+     ``` pip3 install -r requirements 
+     ```
+      highly recommend using a virtual enviornment :) but not nessacery.
+      
+      ```Usage: 
+        |pyblogger init| - initializes a new project
+        |pyblogger newpost| - new post.
+        |pyblogger compile| - compiles the markdowns
+        |pyblogger commit| - commits changes
+       ```
+  ### windows:
+        currently not tested, but you can change the name of pyblogger into pyblogger.py
+        then use your normal ```python pyblogger.py -command```. Should work if all the dependencies are right.
+  ### mac:
+        Same as windows
+# How it works
+```code
+Usage: 
+        |pyblogger init|    - initializes a new project
+        |pyblogger newpost| - new post.
+        |pyblogger newtab| - new tab.
+        |pyblogger compile| - compiles the markdowns
+```
+Initiate a project by ```pyblogger init```, then a directory is generated:
+```
+-index.html
+-Project Name
+   -config.txt+
+   -layouts
+   -pages
+   -tabs
+   -tabshtml
+```
+# Current Features:
+   Create markdown pages, edit them, then use markdown compile to compile :)
+   
+# TODO
+  Add an editor.
+  Integration with git
+  Server hosting
+  better documentation
+  themes (currently only a default minimalist theme is used)
+# Credit:
+  mistune
+  jinja2
