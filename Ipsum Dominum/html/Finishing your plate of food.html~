@@ -31,12 +31,17 @@
   <!-- Primary Page Layout
        –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 
-  <div class="container">
+  <div class="container " style="padding:20px">
        
 <button onclick="document.location='./../../index.html'"> Back to home</button>
-<h1>To finish or not to finish your plate?</h1>
-<p><strong>No matter what profession you choose to do,or hobby you dedicate your time to.
-we eventually come to face the question: </strong> How to invest your time wisely, when there are so many things you could invest in.</p>
+<h1>Finishing your plate of food,<strong>or not</strong>, and talking about failures</h1>
+<p>No matter what profession or hobby we may choose to dedicate their time to. <br/>
+<strong> Our time is limited.</strong> <br/>
+This is why we must choose wisely, onto what projects we
+must devote our time to. <br/>
+Talking about failures is a difficult task, No one really wants
+to share a story to others which may give a 
+<img src="/images/rabbit.jpeg" alt=""></p>
 
 
 </body>
