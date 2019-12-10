@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    user-select: none; /* supported by Chrome and Opera */
+   -webkit-user-select: none; /* Safari */
+   -khtml-user-select: none; /* Konqueror HTML */
+   -moz-user-select: none; /* Firefox */
+   -ms-user-select: none; /* Internet Explorer/Edge */
+  }
+  body {
+    background: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  canvas {
+    border: 1px solid white;
+  }
+  input.small{
+    width:40px;
+  }
+  input{
+    width:40px;
+  }
+  a{
+    border:white solid 1px;
+    background:rgba(161, 161, 161, 0.8);
+    padding-top:5px;
+    padding-left:5px;
+    padding-right:5px;
+    padding-bottom:5px;
+  }
+  </style>
+</head>
+<div id='infobox' style="position:absolute;top:100px;left:0px;">
+    <p id="info" style="color:white">Info:</p>
+    <p id="inforollout" style="color:white">RolloutNum: 0 </p>
+    <p id="infofitness" style="color:white">Best_fitness: 0 </p>
+    <label style="color:white">Max Population:<a onclick="change_pop(this)">-</a><input id="maxpop" disabled value="2000"><a onclick="change_pop(this)">+</a></label><br>
+    <label style="color:white">Elite Population:<a onclick="change_elite(this)">-</a><input id="elite_rate" disabled value="10"><a onclick="change_elite(this)">+</a></label><br>
+    <label style="color:white">Mutation Rate:<a onclick="change_muta(this)">-</a><input id="muta_rate" class="small"disabled value="0.3"><a onclick="change_muta(this)">+</a></label><br>
+    <label style="color:white">Cross Rate:<a onclick="change_crossy(this)">-</a><input id="crossy_rate"class="small" disabled value="0.3"><a onclick="change_crossy(this)">+</a></label><br>
+    <label style="color:white">Excess Rate:<a onclick="change_excess(this)">-</a><input id="exo_rate" class="small" disabled value="0.3"><a onclick="change_excess(this)">+</a></label><br>
+    <button onclick="next_roll_out();">Next roll out</button>
+    <button style="display:none;"id="showbest" onclick="animate_snake();">Show Best</button>
+</div>
+<body>
+
+<canvas width="400" height="400" id="game"></canvas>
+<script src="neuronetwork.js"></script>
+<script src="snakeheadless.js"></script>
+
+</body>
+</html>
+<script>
+
+
+window.ondragstart = function() { return false; } 
+
+</script>
