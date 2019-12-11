@@ -29,10 +29,8 @@ Technical Experience
 Programming Languages<br/>
 :   **Python:** <br/>
 :   **Javascript** <br/>
-:   **Mind Fuck:** I am highly proficient at Mind Fuck. With 100 years of professional development experience.<br/>
 :   **C**, **C++**, **lisp**, **racket**, **Java**
 
-[ref]: https://github.com/githubuser/superlongprojectname
 
 Personal
 ----------------------------------------
