@@ -21,8 +21,7 @@ p{
     color:orange;
     font-family: 'Yeon Sung';font-size: 500px;
 }
-.bigarrow:hover{
-}
+
 .disabled{
     color:grey;
 }
@@ -42,5 +41,14 @@ p{
     width:30%;
     height:30%;
 }
-
+a{
+   text-decoration:none;
+   color:rgb(88, 189, 6) !important;
+   border-bottom:rgb(69, 175, 8) solid 1px;
+}
+a.nav{
+    text-decoration: none;
+    color:black !important;
+    border-bottom:none;
+}
 
