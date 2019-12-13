@@ -9,3 +9,4 @@ Recommended blogs, last updated 11/12/2019
 |Open AI blog         |https://openai.com/blog/| english
 |  Deepmind Research     |https://deepmind.com/research| english
 |Cornell mushorrom blog |https://blog.mycology.cornell.edu/| english
+|Prawns and Probability | http://prawnsandprobability.blogspot.com/| english
