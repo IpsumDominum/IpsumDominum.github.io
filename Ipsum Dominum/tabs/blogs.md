@@ -10,3 +10,5 @@ Recommended blogs, last updated 11/12/2019
 |  Deepmind Research     |https://deepmind.com/research| english
 |Cornell mushorrom blog |https://blog.mycology.cornell.edu/| english
 |Prawns and Probability | http://prawnsandprobability.blogspot.com/| english
+|Distill Blog |https://distill.pub/ | english
+|Colah's Blog |https://colah.github.io/| english
