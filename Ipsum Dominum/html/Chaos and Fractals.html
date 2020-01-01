@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta charset="utf-8">
+  <title>IpsumDominum</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <!-- Mobile Specific Metas
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- FONT
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!-- CSS
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="stylesheet" href="../layouts/css/normalize.css">
+  <link rel="stylesheet" href="../layouts/css/style.css">
+  <link rel="stylesheet" href="../layouts/css/skeleton.css">
+  <!-- Favicon
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="icon" type="image/png" href="brain.jpg">
+  <style>
+    canvas{
+        width:500px;
+        height:500px;
+        border:black solid 1px;
+        background:black;
+    }
+    </style>
+</head>
+<body>
+
+  <!-- Primary Page Layout
+       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <div class="container " style="padding:20px">
+       
+<button onclick="document.location='./../../index.html'"> Back to home</button>
+<h1>Barnsley's leaf and Sierpinski gasket</h1>
+
+
+Color:
+<select id="color_choice">
+    <option>Green</option>
+    <option>White</option>
+</select> 
+Step Size:
+<select id="step_size">
+    <option>1</option>
+    <option>10</option>
+    <option>100</option>
+    <option>1000</option>
+    <option>10000</option>
+</select> 
+<button onclick="clear_canvas()">Reset</button><br>
+<button onclick="draw_fern()">Draw Fern</button>
+<button onclick="draw_triangle()">Draw Triangle</button>
+<canvas id="canvas"></canvas>
+
+
+
+</body>
+</html>
+
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var color_choice = document.getElementById('color_choice');
+  var step_size = document.getElementById('step_size');
+  ctx.canvas.width = 600;
+  ctx.canvas.height = 600;
+  ctx.fillStyle = "black";
+  var lastx = 100;
+  var lasty = 100;
+  var newx = 0;
+  var newy = 0;
+  
+  function draw_triangle(){
+      var draw_amount = parseInt(step_size.options[step_size.selectedIndex].text);
+      for(i=0;i<draw_amount;i++){   
+          draw(Math.floor(lastx),Math.floor(lasty));  
+          randompoint = choose(
+              [[50,500],[300,100],[500,500]]
+          );
+          newx = (randompoint[0] + lastx)/2;
+          newy = (randompoint[1] + lasty)/2;
+          lastx = newx;
+          lasty = newy;
+      }
+  }
+  function clear_canvas(){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      lastx = 0;
+      lasty = 0;
+      newx = 0;
+      newy = 0;
+  }
+  function draw_fern(){
+      var draw_amount = parseInt(step_size.options[step_size.selectedIndex].text);
+      for(i=0;i<draw_amount;i++){
+          draw(Math.floor(lastx*80+250),-Math.floor(lasty*55-580));
+          randomtransform = Math.random();
+          if(randomtransform<0.85){
+              newx = lastx* 0.85+ lasty*0.04 ;
+              newy = lastx* -0.04 + lasty* 0.85 + 1.6;
+          }else if(randomtransform>=0.85 && randomtransform<0.92){
+              newx = lastx* -0.15 + lasty*0.28;
+              newy = lastx* 0.26 + lasty*0.24 + 0.44;
+          }else if(randomtransform>=0.92 && randomtransform<0.99){
+              newx = lastx*0.2 + lasty*-0.26;
+              newy = lastx*0.23 + lasty*0.22 + 1.6;
+          }else if(randomtransform>0.99){
+              newx = 0;
+              newy = lasty*0.16
+          }
+          lastx = newx;
+          lasty = newy;
+      }
+  }
+  
+  
+  
+  function draw(x,y){
+      ctx.fillStyle = color_choice.options[color_choice.selectedIndex].text;
+      ctx.fillRect(x,y,1,1); // fill in the pixel at (10,10)
+  }
+  function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+      if ((new Date().getTime() - start) > milliseconds){
+        break;
+      }
+    }
+  }
+  function choose(choices) {
+      var index = Math.floor(Math.random() * choices.length);
+      return choices[index];
+  }
+  </script>
+  
