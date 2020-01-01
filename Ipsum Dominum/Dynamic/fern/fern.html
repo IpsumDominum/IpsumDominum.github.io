@@ -7,25 +7,57 @@ canvas{
 </style>
 
 <button onclick="draw_fern()">Draw Fern</button>
+<button onclick="draw_triangle()">Draw Triangle</button>
+<button onclick="clear_canvas()">Clear</button>
+<button onclick="green()">Green</button>
+<button onclick="black()">Green</button>
 
-<canvas id="canvas">
-
-</canvas>
+<canvas id="canvas"></canvas>
 
 <script>
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+ctx.canvas.width = 600;
+ctx.canvas.height = 600;
 ctx.fillStyle = "black";
 var lastx = 0;
 var lasty = 0;
 var newx = 0;
 var newy = 0;
-
-
+function green(){
+    ctx.fillStyle = "green";
+}
+function black(){
+    ctx.fillStyle = "black";
+}
+function draw_triangle(){
+    draw(50,500);
+    draw(300,100);
+    draw(500,500);
+    for(i=0;i<2000;i++){   
+        draw(Math.floor(lastx),Math.floor(lasty));  
+        randompoint = choose(
+            [[50,500],[300,100],[500,500]]
+        );
+        newx = (randompoint[0] + lastx)/2;
+        newy = (randompoint[1] + lasty)/2;
+        lastx = newx;
+        lasty = newy;
+    }
+}
+function clear_canvas(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    lastx = 0;
+    lasty = 0;
+    newx = 0;
+    newy = 0;
+}
 function draw_fern(){
-    for(i=0;i<20000;i++){
-        draw(Math.floor(lastx*40+140),-Math.floor(lasty*20-140));
-        randomtransform = choose();
+    for(i=0;i<10000;i++){
+        draw(Math.floor(lastx*130+250),-Math.floor(lasty*70-580));
+        randomtransform = choose(
+            ["1","2","3","4"]
+        );
         if(randomtransform=="1"){
             newx = lastx* 0.85+ lasty*0.04;
             newy = lastx* -0.04 + lasty* 0.85 + 1.6;
@@ -57,8 +89,7 @@ function sleep(milliseconds) {
     }
   }
 }
-function choose() {
-    choices = ["1","2","3","4"]
+function choose(choices) {
     var index = Math.floor(Math.random() * choices.length);
     return choices[index];
 }
