@@ -43,11 +43,17 @@
 <button onclick="document.location='./../../index.html'"> Back to home</button>
 <h1>Barnsley's leaf and Sierpinski gasket</h1>
 
-
+<p>Select a color and the amount of points drawn at a time.
+  then click either draw fern or drawn triangle many many times
+  to draw.
+</p>
 Color:
 <select id="color_choice">
-    <option>Green</option>
     <option>White</option>
+    <option>Green</option>
+    <option>Red</option>
+    <option>Yellow</option>
+    <option>Blue</option>
 </select> 
 Step Size:
 <select id="step_size">
@@ -56,10 +62,22 @@ Step Size:
     <option>100</option>
     <option>1000</option>
     <option>10000</option>
-</select> 
+</select>
+<select id="speed">
+  <option value="slow">Slow</option>
+  <option value="medium">Medium</option>
+  <option value="fast">Fast</option>
+ </select>
+
 <button onclick="clear_canvas()">Reset</button><br>
-<button onclick="draw_fern()">Draw Fern</button>
-<button onclick="draw_triangle()">Draw Triangle</button>
+Pattern:
+<select id="pattern">
+  <option value="fern">Fern</option>
+  <option value="triangle">Triangle</option>
+</select> 
+<button onclick="draw_pattern()">Draw</button>
+<button onclick="auto_draw()">Auto Draw</button>
+<button onclick="stop()">Stop</button>
 <canvas id="canvas"></canvas>
 
 
@@ -72,6 +90,8 @@ Step Size:
   var ctx = canvas.getContext("2d");
   var color_choice = document.getElementById('color_choice');
   var step_size = document.getElementById('step_size');
+  var pattern = document.getElementById('pattern');
+  var speed = document.getElementById('speed');
   ctx.canvas.width = 600;
   ctx.canvas.height = 600;
   ctx.fillStyle = "black";
@@ -79,7 +99,36 @@ Step Size:
   var lasty = 100;
   var newx = 0;
   var newy = 0;
-  
+  var idx = 0;
+  var animation_delay = 500;
+  var drawing = false;
+  function stop(){
+    drawing = false;  
+  }
+  function auto_draw(){
+    drawing= true;
+    var speed_choice = speed.options[speed.selectedIndex].value;
+    if(speed_choice=="slow"){
+      animation_delay = 1000;
+    }else if(speed_choice=="medium"){
+      animation_delay = 500;
+    }else if(speed_choice=="fast"){
+      animation_delay = 100;
+    }
+    setInterval(function(){
+      if(drawing){
+      draw_pattern();
+      }
+    }, animation_delay);
+  }
+function draw_pattern(){
+  var pattern_choice = pattern.options[pattern.selectedIndex].value;
+  if(pattern_choice=="fern"){
+      draw_fern();
+  }else if(pattern_choice=="triangle"){
+      draw_triangle();
+  }
+}
   function draw_triangle(){
       var draw_amount = parseInt(step_size.options[step_size.selectedIndex].text);
       for(i=0;i<draw_amount;i++){   
@@ -129,14 +178,7 @@ Step Size:
       ctx.fillStyle = color_choice.options[color_choice.selectedIndex].text;
       ctx.fillRect(x,y,1,1); // fill in the pixel at (10,10)
   }
-  function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-      if ((new Date().getTime() - start) > milliseconds){
-        break;
-      }
-    }
-  }
+ 
   function choose(choices) {
       var index = Math.floor(Math.random() * choices.length);
       return choices[index];
