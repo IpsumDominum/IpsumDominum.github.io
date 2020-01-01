@@ -1,0 +1,65 @@
+<style>
+canvas{
+    width:600px;
+    height:600px;
+    border:black solid 1px;
+}
+</style>
+
+<button onclick="draw_fern()">Draw Fern</button>
+
+<canvas id="canvas">
+
+</canvas>
+
+<script>
+var canvas = document.getElementById("canvas");
+var ctx = canvas.getContext("2d");
+ctx.fillStyle = "black";
+var lastx = 0;
+var lasty = 0;
+var newx = 0;
+var newy = 0;
+
+
+function draw_fern(){
+    for(i=0;i<20000;i++){
+        draw(Math.floor(lastx*40+140),-Math.floor(lasty*20-140));
+        randomtransform = choose();
+        if(randomtransform=="1"){
+            newx = lastx* 0.85+ lasty*0.04;
+            newy = lastx* -0.04 + lasty* 0.85 + 1.6;
+        }else if(randomtransform=="2"){
+            newx = lastx* -0.15 + lasty*0.28;
+            newy = lastx* 0.26 + lasty*0.24 + 0.44;
+        }else if(randomtransform=="3"){
+            newx = lastx*0.2 + lasty*-0.26;
+            newy = lastx*0.23 + lasty*0.22 + 1.6;
+        }else if(randomtransform=="4"){
+            newx = 0;
+            newy = lasty*0.16
+        }
+        lastx = newx;
+        lasty = newy;
+    }
+}
+
+
+
+function draw(x,y){
+ctx.fillRect(x,y,1,1); // fill in the pixel at (10,10)
+}
+function sleep(milliseconds) {
+  var start = new Date().getTime();
+  for (var i = 0; i < 1e7; i++) {
+    if ((new Date().getTime() - start) > milliseconds){
+      break;
+    }
+  }
+}
+function choose() {
+    choices = ["1","2","3","4"]
+    var index = Math.floor(Math.random() * choices.length);
+    return choices[index];
+}
+</script>
