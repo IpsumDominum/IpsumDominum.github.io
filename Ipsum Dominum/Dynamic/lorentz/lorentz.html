@@ -1,0 +1,91 @@
+<style>
+    canvas{
+        width:500px;
+        height:500px;
+        border:black solid 1px;
+        background:black;
+    }
+    input{
+        width:300px;
+    }
+    body {
+  background: #18181d;
+  text-align: center;
+}
+
+canvas {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+}
+    </style>
+<h1>Others</h1>
+<select id="mode">
+    <option>Lorentz Attractor</option>
+    <option>Double Pendulum</option>
+</select>
+<h1>Lorentz Attractor</h1>
+
+<p>Lorentz Attractor
+</p>
+<button onclick="start()">Start</button>
+<button onclick="stop()">Stop</button><br>
+
+<canvas id="canvas" width="500" height="660">
+</body>
+</html>
+
+<script>
+  var canvas = document.getElementById('canvas');
+
+
+context = canvas.getContext('2d');
+context.canvas.width = 500;
+context.canvas.height = 600;
+    var c = 28, 
+    h = 0.015,
+    t = -6,
+    x0 = 0, 
+    y0 = 1, 
+    z0 = 10,
+    x1,
+    y1,
+    z1,
+    cx = 250,
+    cy = 330,
+    scale = 15,
+    n = 20000,
+    i = 0;
+    var lorentz = false;
+function start(){
+    lorentz = true;
+}
+function stop(){
+    lorentz = false;
+}
+var interval = setInterval(function() {
+    /*color_choice.options[color_choice.selectedIndex].text;*/
+if(lorentz){
+  if (i < n) {
+    for (var k = 0; k < 20; k += 1) {
+      x1 = x0 + h * t * (x0 - y0);
+      y1 = y0 + h * (-x0 * z0 + c * x0 - y0);
+      z1 = z0 + h * (x0 * y0 - z0);
+
+      context.strokeStyle = "hsl(" + Math.abs(x1)*10 + "," + Math.abs(y1)*10 + "%," + Math.abs(z1)*2 + "%)";
+      
+      context.beginPath();
+      context.moveTo(cx + x0 * scale, cy + y0 * scale);
+      context.lineTo(cx + x1 * scale, cy + y1 * scale);
+      context.stroke();
+
+      x0 = x1;
+      y0 = y1;
+      z0 = z1;
+
+      i += 1;
+    }
+  }
+  } 
+}, 1);
+  </script>
