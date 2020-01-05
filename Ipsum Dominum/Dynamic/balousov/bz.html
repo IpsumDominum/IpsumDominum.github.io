@@ -1,0 +1,81 @@
+<style>
+    canvas{
+        width:500px;
+        height:500px;
+        border:black solid 1px;
+        background:black;
+    }
+    input{
+        width:40px;
+    }
+    </style>
+<h1>Continous Motions</h1>
+<select>
+    <option>Balousov</option>
+</select>
+<h1>Balousov Zhabotinsky reaction</h1>
+
+<p>Balousov Zhabotinsky reaction
+</p>
+
+<h2>Alpha = 1</h2>
+<source src="alpha1.mp4" type="video/mp4">    
+
+<h2>Alpha =1.2</h2>
+<source src="alpha12.mp4" type="video/mp4">
+<!---
+<label>Alpha</label><input id="alpha"><br>
+<label>Beta</label><input id="beta"><br>
+<label>Gamma</label><input id="gamma"><br>
+<button onclick="toggle()">Pause</button><br>
+<canvas id="canvas"></canvas>-->
+
+https://www.nature.com/articles/news.2010.15
+
+</body>
+</html>
+
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+  var alpha_i = document.getElementById('alpha');
+  var beta_i = document.getElementById('beta');
+  var gamma_i = document.getElementById('gamma');
+  ctx.canvas.width = 300;
+  ctx.canvas.height = 300;
+  ctx.fillStyle = "black";
+  var running = true;
+  ax = 1;
+  ay = 1;  
+  bx = 1;
+  by = 1;
+  cx = 1;
+  cy = 1;
+  if(alpha_i.value!=""){
+    alpha = alpha_i.value;
+  }else{
+      alpha = 1;
+  }
+  if(beta_i.value!=""){
+    beta = beta_i.value;      
+  }else{
+      beta = 1;
+  }
+  if(gamma_i.value!=""){
+    gamma = gamma_i.value;      
+  }else{
+      gamma = 1;
+  }
+setInterval(function(){
+    if(running){
+        ax = ax + ax*(alpha*bx - beta*cx);
+        ay = ay+ ay*(alpha*by - beta*cy);
+
+    }   
+},50);
+function draw(x,y){
+    ctx.fillStyle = color_choice.options[color_choice.selectedIndex].text;
+    ctx.fillRect(x,y,1,1); // fill in the pixel at (10,10)
+}
+  </script>
+  

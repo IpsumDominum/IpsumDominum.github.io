@@ -1,0 +1,67 @@
+<style>
+    canvas{
+        width:500px;
+        height:500px;
+        border:black solid 1px;
+        background:black;
+    }
+    input{
+        width:300px;
+    }
+    </style>
+<h1>Mathematical Progressions</h1>
+<select>
+    <option>Collatz</option>
+</select>
+<h1>Collatz Conjecture</h1>
+
+<p>Collatz Conjecture
+</p>
+<label>Start Number</label><input id="start"><br>
+<button onclick="start_draw()">Draw</button>
+<button onclick="stop()">Stop</button><br>
+<canvas id="canvas"></canvas>
+
+https://www.nature.com/articles/news.2010.15
+
+</body>
+</html>
+
+<script>
+  var canvas = document.getElementById("canvas");
+  var ctx = canvas.getContext("2d");
+var start = document.getElementById('start');
+  ctx.canvas.width = 1000;
+  ctx.canvas.height = 500;
+  ctx.fillStyle = "white";
+var auto_drawing = false;
+function start_draw(){
+    auto_drawing = true;
+}
+function stop(){
+    auto_drawing = false;
+}
+setInterval(function(){
+    if(start.value!=""){
+    start_value = parseInt(start.value);
+    }else{
+        start_value = 0;
+    }
+    if(auto_drawing){
+        start_value = start_value+1;
+        start.value = start_value;
+    }
+    for(i=0;i<ctx.canvas.width;i++){            
+    draw(i,ctx.canvas.height-start_value);
+    if(start_value%2==0){
+        start_value = start_value/2;
+    }else{
+        start_value = start_value *3 +1;
+    }
+    }
+},1);
+function draw(x,y){
+    ctx.fillStyle = 'white';
+    ctx.fillRect(x,y,1,1); // fill in the pixel at (10,10)
+}
+  </script>
