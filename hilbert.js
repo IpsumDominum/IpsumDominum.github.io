@@ -1,42 +1,55 @@
    
-    
+/* Hilbert Function
+   gets required order from user input,computes suitable sizes
+   for display canvas and hilbert curve size.
+   compute from order 1, iteratively , up to the desired order.
+*/
 function hilbert(){
     var start_lines = [[0,1],[1,3],[3,2]];  
     var absolute_centers = get_centers();
     var cur_lines = get_lines(start_lines,absolute_centers);
-    order = order_input.value;
-    var re = new RegExp('[^0-9]+');
-    var check = re.exec(order);
+    
+    //Get and check user input 
+    var order = order_input.value;
+    var re = new RegExp('[^0-9]+');    
+    var check = re.exec(order); 
     if(check!=null){
         warn("please Enter a valid number :)");
         return;
-    }else if(parseInt(order)>10){
+    }else if(parseInt(order)>10 && !big_num.checked){
         warn("Number entered too big!! Enable<strong style='color:rgb(255,100,100)'>Big Number mode</strong> to continue, at your own risk...");
         return;
     }
+    //Iteratively, from order 0 up to desired order
     for(ijj=0;ijj<parseInt(order);ijj++){
         ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
         if(ijj==0){
             draw_grid();
             grid_size = 2;
+            //order 0, do nothing except for draw grid
         }else{
+            //Otherwise draw grid as usual
             grid_size = Math.pow(2,ijj);
             draw_grid();
+            
+            //Algorithm is as follows:
+            //Start from order one, take all the points of the current curve
+            //and create four copies, flip and translate accordingly,
+            //then concatenate the result to be the next current curve.
+            //Do until desired order achieved in loop.
             left_t = send_to(scale(flip(cur_lines,"right"),2),"top_r");
             right_t = scale(flip(cur_lines,"left"),2);
             left_b = send_to(scale(cur_lines,2),"bot_l");
             right_b = send_to(scale(cur_lines,2),"bot_r");
             cur_lines = left_t.concat(right_t).concat(left_b).concat(right_b).concat(connect());
         }    
+        if(ijj==parseInt(order)-1){
+         draw(cur_lines);   
+        }
     }    
-    draw(cur_lines);
+
 }
-//When transformed,take the current constructed points,
-//Scale it by 2, and move it to different corners
-    
-function warn(message){
-    document.getElementById('warning').innerHTML = message;
-}
+
     
     
 /*---------------------------------------------------*/
@@ -144,6 +157,9 @@ function weird_translation(){
     console.log(weird_num);
     return weird_num;
 }
+
+
+
 function send_to(lines,position){
     var xShift = 0;
     var yShift = 0;
