@@ -1,0 +1,145 @@
+<style>
+  canvas{
+  width:600px;
+  height:600px;
+background:white;
+  }
+    html{
+        background:rgba(0,0,0,0.6);
+    }
+    input{
+        width:40px;   
+    }
+    
+.rainbow {
+  background-image: -webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  background-image: gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );
+  color:transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+</style>
+
+<body id="body">
+    <div id="mysterybox" style="display:none;position:absolute;top:200px;left:400px;overflow:hidden">
+    <img  src="https://www.otago.ac.nz/cs/groups/public/@compsci/documents/webcontent/otago680893.jpg"
+     >
+        </div>
+<center>    
+<h1>Hilbert Curves</h1>
+<h2>Chen-cosc326-2020</h2>
+    <hr>
+Type an integer to the Order input box, and press draw to get started :)<br>
+<label style="color:rgb(255,100,100)">Big number mode</label><input id="bignum"type="checkbox">
+<label class="rainbow">Rainbow mode</label><input onclick="toggle_rainbow()"id="rainbow"type="checkbox"><br>
+
+<label style="color:white">Order: </label><input id="order">
+<button onclick="hilbert()"style="width:60px;height:40px">Draw</button>
+<button onclick="reset()"style="width:60px;height:40px;">Reset</button>
+    
+<br>
+<label id="warning"style="color:rgba(255,180,180,1)"></label>
+<br>
+<canvas id="canvas"></canvas> <br>
+    
+    <label style="color:rgba(0,0,0,0.1)">Mystery Mode</label><input onclick="toggle_rainbow()"id="mystery"type="checkbox"><br>
+<label style="color:gold">EPLIPSY WARNING!!FLASHING LIGHTS!!</label>
+</center>
+    </body>
+
+
+
+<script src="hilbert.js"></script>
+
+<script>
+    var canvas = document.getElementById("canvas");
+    var ctx = canvas.getContext("2d");
+    var big_num = document.getElementById("bignum");
+    var rainbow_mode = document.getElementById("rainbow");
+    var mystery_mode = document.getElementById("mystery");
+    width =1000; 
+    height = 1000;
+    ctx.canvas.width = width;
+    ctx.canvas.height = height;
+    var order_input = document.getElementById('order');
+var grid_size = 2;
+draw_grid();    
+var drawing = false;
+ctx.strokeStyle = "blue";
+var animate = true;
+var mystery_running = false;
+var mystery_mx = 0;
+var mystery_my = 0;
+var auto_queue = [];
+setInterval(function(){
+    if(auto_queue.length>0){
+        auto_hilbert(auto_queue.pop());
+    }    
+},1);
+function toggle_rainbow(){
+    if(mystery_mode.checked && mystery_running==false){        
+        var elem = document.getElementById("mysterybox"); 
+        var audio = new Audio("https://www.myinstants.com/media/sounds/epicsaxguy.mp3");
+        elem.style.display = 'block';
+        mystery_running = true;
+        var mystery_mx = 100;
+        var mystery_my = 50;
+        for(i=0;i<8;i++){
+            auto_queue.push(i);   
+        }
+        setInterval(
+    function(){
+        audio.play();
+         var style = "rgb("+(Math.random()*255).toString() +","+ (Math.random()*255).toString()+","+ (Math.random()*255).toString() + ")";
+       document.body.style.backgroundColor= style;
+                var elemLeft = parseInt(elem.style.left);
+                var elemTop = parseInt(elem.style.top);
+              if(elemLeft>window.innerWidth || elemLeft<0){
+                  elem.style.left ="0px" ;
+                  elem.innerHTML += `<img  src='https://www.otago.ac.nz/cs/groups/public/@compsci/documents/webcontent/otago680893.jpg' style='margin-left:`+Math.random()*200+"px'>";
+              }
+                if(elemTop<window.innerHeight ||elemTop<0){
+                    elem.style.top = "0px";
+                }
+              elem.style.top = parseInt(elem.style.top)+mystery_my + 'px'; 
+              elem.style.left = parseInt(elem.style.left)+mystery_mx + 'px'; 
+          },400);
+    }else{
+        var elem = document.getElementById("mysterybox"); 
+        elem.display = 'none';
+    }
+}
+var animating = true;
+function auto_hilbert(level){
+    var start_lines = [[0,1],[1,3],[3,2]];  
+    var absolute_centers = get_centers();
+    var cur_lines = get_lines(start_lines,absolute_centers);
+    var order= level;
+    var re = new RegExp('[^0-9]+');
+    var check = re.exec(order);
+    if(check!=null){
+        warn("please Enter a valid number :)");
+        return;
+    }else if(parseInt(order)>10){
+        warn("Number entered too big!! Enable<strong style='color:rgb(255,100,100)'>Big Number mode</strong> to continue, at your own risk...");
+        return;
+    }
+    for(ijj=0;ijj<parseInt(order);ijj++){
+        ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+        if(ijj==0){
+            draw_grid();
+            grid_size = 2;
+        }else{
+            grid_size = Math.pow(2,ijj);
+            draw_grid();
+            left_t = send_to(scale(flip(cur_lines,"right"),2),"top_r");
+            right_t = scale(flip(cur_lines,"left"),2);
+            left_b = send_to(scale(cur_lines,2),"bot_l");
+            right_b = send_to(scale(cur_lines,2),"bot_r");
+            cur_lines = left_t.concat(right_t).concat(left_b).concat(right_b).concat(connect());
+        }    
+    }    
+    draw(cur_lines);
+}
+
+</script>
