@@ -90,7 +90,7 @@ function draw_grid(){
 }
 
 function draw(lines){   
-    if(!mystery_mode.checked){
+    if(!mystery_mode.checked && !animating){
         ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
         draw_grid();
         for(i=0;i<lines.length;i++){
