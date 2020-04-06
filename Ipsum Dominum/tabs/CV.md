@@ -12,13 +12,14 @@ Education
 
 Experience
 ----------
-&nbsp;&nbsp;**Aule Limited - Contracted developer:**<br/>
+&nbsp;&nbsp;**Aule Limited - Web developer:**<br/>
 &nbsp;&nbsp;November 2019-now<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Currently working on a particular web developing project<br/>
+Working alongside a team of front end, back end and designers to create a medium scale web application<br/>
 &nbsp;&nbsp;**Otago University Neuroscience Department - research assistant**<br/>
 &nbsp;&nbsp;October 2019- now<br/>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently working on research regarding to EEG data analysis<br/>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Currently working on research regarding to applying Neuroscience knowledge to developing models of 
+manipulation,memory and world representation on robotics in real life enviornments.<br/>
 &nbsp;&nbsp;**Otago University Physics Department - Summer Research Project:**<br/>
 &nbsp;&nbsp;October 2018-5 weeks<br/>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Developed a graphical software interface for slicing simulated Earth Climate data in netCDF format.<br/>
@@ -41,6 +42,6 @@ Programming Languages<br/>
 
 Personal
 ----------------------------------------
-I like wearing unmatching socks and climbing rocks.
+I like rock climbing, cooking and playing the piano.
 
 

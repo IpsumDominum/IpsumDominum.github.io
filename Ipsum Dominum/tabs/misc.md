@@ -41,3 +41,8 @@ Professor Peter Norvig on python: "I was trying to find a language that could mo
 |hilbert|/Ipsum Dominum/html/hilbert.html|Tuesday 17. March 2020|
 |fern|/Ipsum Dominum/html/fern.html|Tuesday 17. March 2020|
 |lorentz|/Ipsum Dominum/html/lorentz.html|Tuesday 17. March 2020|
+|mendel|/Ipsum Dominum/html/mendel.html|Tuesday 17. March 2020|
+|others|/Ipsum Dominum/html/others.html|Tuesday 17. March 2020|
+|hilbert|/Ipsum Dominum/html/hilbert.html|Tuesday 17. March 2020|
+|fern|/Ipsum Dominum/html/fern.html|Tuesday 17. March 2020|
+|lorentz|/Ipsum Dominum/html/lorentz.html|Tuesday 17. March 2020|

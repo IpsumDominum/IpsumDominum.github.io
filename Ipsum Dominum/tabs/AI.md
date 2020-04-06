@@ -31,3 +31,5 @@ Professor Peter Norvig on python: "I was trying to find a language that could mo
 |Another view on artificial intelligence progress|/Ipsum Dominum/html/Another view on artificial intelligence progress.html|Tuesday 17. March 2020|
 |Machine learning is not so complicated|/Ipsum Dominum/html/Machine learning is not so complicated.html|Tuesday 17. March 2020|
 |Another view on artificial intelligence progress|/Ipsum Dominum/html/Another view on artificial intelligence progress.html|Tuesday 17. March 2020|
+|Machine learning is not so complicated|/Ipsum Dominum/html/Machine learning is not so complicated.html|Tuesday 17. March 2020|
+|Another view on artificial intelligence progress|/Ipsum Dominum/html/Another view on artificial intelligence progress.html|Tuesday 17. March 2020|
