@@ -1,0 +1,19 @@
+ <!-- Start Block
+ –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ <div class="row">
+
+<h4>AI related<h4>
+
+<div class="row">
+{% for post in posts %}
+<div class="row">
+<div class="column itembox">
+<div class="row info">
+<center><h6>{{post['date']}}</h6></center>
+<button style="width:100%" onclick="document.location='{{post['link']}}'">{{post['name']}}</button>
+</div>
+</div>
+</div>
+{% endfor %}
+</div>
+</div>
