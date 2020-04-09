@@ -1,9 +1,9 @@
 pyblogger:Tuesday 17. March 2020:projects
-mendel:Tuesday 17. March 2020:misc
-others:Tuesday 17. March 2020:misc
-hilbert:Tuesday 17. March 2020:misc
-fern:Tuesday 17. March 2020:misc
+mendel:Tuesday 17. March 2020:fractals
+others:Tuesday 17. March 2020:fractals
+hilbert:Tuesday 17. March 2020:fractals
+fern:Tuesday 17. March 2020:fractals
 Machine learning is not so complicated:Tuesday 17. March 2020:AI
 Another view on artificial intelligence progress:Tuesday 17. March 2020:AI
-lorentz:Tuesday 17. March 2020:misc
+lorentz:Tuesday 17. March 2020:fractals
 lorentasdasdz:Tuesday 17. March 2020:default
