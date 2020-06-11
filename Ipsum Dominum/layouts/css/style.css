@@ -51,4 +51,6 @@ a.nav{
     color:black !important;
     border-bottom:none;
 }
-
+a.nav:hover{
+    color:white !important;
+}
