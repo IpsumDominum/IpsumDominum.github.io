@@ -3,7 +3,7 @@
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
 }
 body{
-    background-image:url('/media/cork-wallet.png');
+    background-image:url('./media/cork-wallet.png');
 }
 .card2 img{
     width:200px;
@@ -35,7 +35,21 @@ body{
     border-bottom: black solid 1px;
     cursor: pointer;
 }
+.projectbox{
+    display:flex;
+    flex-wrap:wrap;
+justify-content: center;
 
+}
+.projectitem{
+    width:350px;
+    height:300px;
+    border:black solid 1px;
+}
+.projectphoto{
+    width:300px;
+    height:200px;
+}
 .content{
     display:flex;
     text-align: left;
@@ -60,7 +74,8 @@ body{
     padding-bottom:5px;
     background:rgba(255,255,255,0.5);
     margin: 10px 5px 10px 5px;
-    width:100%;
+    width:100%;sheet" href="../layouts/css/main.css">
+  <!-- Favicon
     min-width: 440;
     border:black solid 1px;
 
