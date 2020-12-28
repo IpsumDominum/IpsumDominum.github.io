@@ -126,6 +126,7 @@ justify-content: center;
     float: left;
     padding: 8px 16px;
     text-decoration: none;
+    color:inherit;
   }
   
   .pagination a.active {
